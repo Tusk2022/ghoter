@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- Google Translate rewrites the DOM into <font> wrapper tags, which breaks
+     the direct-child CSS selectors the reveal/hover animations depend on
+     (e.g. [data-reveal] > span). Opting the whole page out avoids that. -->
+<meta name="google" content="notranslate">
+
+<!-- ============================================================
+     SEO
+     ============================================================ -->
+<title>GHOTER — 3D, VFX &amp; Motion Designer</title>
+<meta name="description" content="3D artist and motion designer creating cinematic visuals with Blender and After Effects.">
+<link rel="canonical" href="https://ghoter.com/">
+<meta name="theme-color" content="#050505">
+<meta name="color-scheme" content="dark">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="GHOTER — 3D, VFX & Motion Designer">
+<meta property="og:description" content="3D artist and motion designer creating cinematic visuals with Blender and After Effects.">
+<meta property="og:image" content="./assets/images/og-cover.jpg">
+<meta property="og:url" content="https://ghoter.com/">
+<meta property="og:site_name" content="GHOTER">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GHOTER — 3D, VFX & Motion Designer">
+<meta name="twitter:description" content="3D artist and motion designer creating cinematic visuals with Blender and After Effects.">
+<meta name="twitter:image" content="./assets/images/og-cover.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg">
+
+<!-- Fonts: Archivo (grotesk, wide weight range) + Archivo Expanded (giant display titles) + JetBrains Mono (technical labels) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;300;400;500;600;700;800;900&family=Archivo+Expanded:wght@500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     FILM GRAIN OVERLAY (pure CSS, see style.css :: .grain)
+     ============================================================ -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============================================================
+     LOADER
+     ============================================================ -->
+<div class="loader" id="loader" role="status" aria-label="Loading">
+  <div class="loader__mark">GHOTER<sup>&reg;</sup></div>
+  <div class="loader__progress">
+    <span class="loader__count" id="loaderCount">00</span>
+    <span class="loader__bar"><span class="loader__bar-fill" id="loaderFill"></span></span>
+  </div>
+</div>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#top" class="header__logo">GHOTER<span class="header__reg">&reg;</span></a>
+
+    <nav class="header__nav" aria-label="Primary">
+      <a href="#work" class="header__link"><span>WORK</span></a>
+      <a href="#about" class="header__link"><span>ABOUT</span></a>
+      <a href="#process" class="header__link"><span>PROCESS</span></a>
+      <a href="#contact" class="header__link"><span>CONTACT</span></a>
+    </nav>
+
+    <div class="header__status">
+      <span class="header__dot" aria-hidden="true"></span>
+      <span>AVAILABLE FOR FREELANCE</span>
+      <span class="header__year">/ <span id="yearHeader">2026</span></span>
+    </div>
+
+    <button class="header__burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================
+     MOBILE MENU (fullscreen)
+     ============================================================ -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu__nav" aria-label="Mobile primary">
+    <a href="#work" class="mobile-menu__link">WORK</a>
+    <a href="#about" class="mobile-menu__link">ABOUT</a>
+    <a href="#process" class="mobile-menu__link">PROCESS</a>
+    <a href="#contact" class="mobile-menu__link">CONTACT</a>
+  </nav>
+  <div class="mobile-menu__footer">
+    <a href="https://www.instagram.com/ghoterfx/" class="mobile-menu__social" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+    <a href="#" class="mobile-menu__social" id="mobileDiscordLink" target="_blank" rel="noopener noreferrer">DISCORD</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ============================================================
+       HERO — full-bleed showreel video
+       Replace source: ./assets/videos/hero.mp4
+       Replace poster: ./assets/posters/hero.webp
+       ============================================================ -->
+  <section class="hero" id="hero" aria-label="Intro showreel">
+    <div class="hero__media" id="heroMedia">
+      <div class="hero__placeholder">
+        <span class="hero__placeholder-text">ADD SHOWREEL — ./assets/videos/hero.mp4</span>
+      </div>
+      <!-- HERO VIDEO: swap src below with the real showreel export -->
+      <video
+        class="hero__video"
+        id="heroVideo"
+        poster="./assets/posters/hero.webp"
+        autoplay muted loop playsinline preload="auto"
+        aria-hidden="true">
+        <source src="./assets/videos/hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero__scrim"></div>
+    </div>
+
+    <div class="hero__grid">
+      <div class="hero__top">
+        <p class="hero__kicker">GHOTER</p>
+        <p class="hero__kicker hero__kicker--mono">3D / VFX / MOTION DESIGN</p>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__line" data-reveal>DIGITAL</span>
+        <span class="hero__line" data-reveal>MOTION</span>
+      </h1>
+
+      <p class="hero__software"><span>AFTER EFFECTS</span><span class="hero__x">&times;</span><span>BLENDER</span></p>
+
+      <div class="hero__bottom">
+        <span class="hero__meta">/ 001</span>
+        <span class="hero__meta hero__meta--center">BLENDER + AFTER EFFECTS</span>
+        <span class="hero__meta" id="yearHero">2026</span>
+      </div>
+    </div>
+
+    <a href="#work" class="hero__scroll" aria-label="Scroll to work">
+      <span class="hero__scroll-line"></span>
+      <span class="hero__scroll-text">SCROLL</span>
+    </a>
+  </section>
+
+  <!-- ============================================================
+       SELECTED WORK — editorial gallery, alternating composition
+       Populated dynamically from the `projects` array in script.js
+       ============================================================ -->
+  <section class="work" id="work" aria-label="Selected work">
+    <div class="work__head">
+      <h2 class="section-title">SELECTED<br>WORK</h2>
+      <div class="work__head-side">
+        <p class="mono-label">/ 01 — SELECTED PROJECTS</p>
+        <p class="work__intro">A curated set of 3D, VFX and motion pieces — composited and rendered between Blender and After Effects.</p>
+      </div>
+    </div>
+
+    <div class="work__list" id="workList"><!-- injected by script.js --></div>
+  </section>
+
+  <!-- ============================================================
+       FEATURED PROJECT — case study for the priority reel
+       Replace source: ./assets/videos/featured.mp4
+       Replace poster: ./assets/posters/featured.webp
+       Original reel: https://www.instagram.com/reel/DXhDstrDfxL/
+       ============================================================ -->
+  <section class="featured" id="featured" aria-label="Featured project">
+    <p class="mono-label featured__eyebrow">PROJECT / 001</p>
+
+    <div class="featured__body">
+      <div class="featured__media">
+        <div class="featured__placeholder">
+          <span>ADD FEATURED REEL — ./assets/videos/featured.mp4</span>
+        </div>
+        <!-- FEATURED VIDEO: swap src below with the DXhDstrDfxL export -->
+        <video
+          class="featured__video"
+          id="featuredVideo"
+          poster="./assets/posters/featured.webp"
+          muted loop playsinline preload="auto"
+          aria-label="Featured project showreel">
+          <source src="./assets/videos/featured.mp4" type="video/mp4">
+        </video>
+        <button class="featured__play" id="featuredPlay" aria-label="Play featured video">
+          <span></span>
+        </button>
+      </div>
+
+      <div class="featured__info">
+        <div class="featured__stamp">
+          <p class="featured__stamp-title">GHOTER</p>
+          <p class="mono-label">SELECTED WORK</p>
+        </div>
+
+        <ul class="featured__tags">
+          <li>BLENDER</li>
+          <li>AFTER EFFECTS</li>
+          <li>VFX</li>
+          <li>MOTION</li>
+        </ul>
+
+        <dl class="featured__specs">
+          <div>
+            <dt class="mono-label">SOFTWARE</dt>
+            <dd>Blender / After Effects</dd>
+          </div>
+          <div>
+            <dt class="mono-label">FORMAT</dt>
+            <dd>Vertical / 9:16</dd>
+          </div>
+          <div>
+            <dt class="mono-label">DISCIPLINE</dt>
+            <dd>3D / Compositing / Motion</dd>
+          </div>
+          <div>
+            <dt class="mono-label">YEAR</dt>
+            <dd>2026</dd>
+          </div>
+          <div>
+            <dt class="mono-label">COLLAB</dt>
+            <dd><a href="https://www.instagram.com/gomes.blend/" target="_blank" rel="noopener noreferrer">@gomes.blend</a></dd>
+          </div>
+        </dl>
+
+        <a href="https://www.instagram.com/reel/DXhDstrDfxL/?utm_source=ig_web_copy_link" class="featured__link" target="_blank" rel="noopener noreferrer">
+          <span>VIEW ORIGINAL REEL</span><span class="arrow">&nearr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3D / BLENDER PIPELINE
+       Replace these with real per-stage renders when available:
+       ./assets/images/pipeline-wireframe.jpg
+       ./assets/images/pipeline-clay.jpg
+       ./assets/images/pipeline-render.jpg
+       ./assets/images/pipeline-comp.jpg
+       (Currently holding 4 finished wheel shots as placeholders — none
+       are actually wireframe/clay-stage captures, so the labels below
+       are aspirational until real WIP renders replace them.)
+       ============================================================ -->
+  <section class="pipeline" id="pipeline" aria-label="3D pipeline">
+    <h2 class="section-title pipeline__title">
+      <span data-reveal>FROM</span>
+      <span data-reveal>3D</span>
+      <span data-reveal>TO</span>
+      <span data-reveal>FRAME</span>
+    </h2>
+
+    <div class="pipeline__flow" aria-hidden="true">
+      <span>BLENDER</span>
+      <span class="pipeline__arrow">&darr;</span>
+      <span>RENDER</span>
+      <span class="pipeline__arrow">&darr;</span>
+      <span>AFTER EFFECTS</span>
+      <span class="pipeline__arrow">&darr;</span>
+      <span>COMPOSITING</span>
+      <span class="pipeline__arrow">&darr;</span>
+      <span>FINAL</span>
+    </div>
+
+    <div class="pipeline__strip">
+      <figure class="pipeline__frame">
+        <div class="pipeline__frame-media" style="background-image:url('./assets/images/pipeline-wireframe.jpg')"></div>
+        <figcaption><span class="mono-label">01</span> WIREFRAME</figcaption>
+      </figure>
+      <figure class="pipeline__frame">
+        <div class="pipeline__frame-media" style="background-image:url('./assets/images/pipeline-clay.jpg')"></div>
+        <figcaption><span class="mono-label">02</span> CLAY RENDER</figcaption>
+      </figure>
+      <figure class="pipeline__frame">
+        <div class="pipeline__frame-media" style="background-image:url('./assets/images/pipeline-render.jpg')"></div>
+        <figcaption><span class="mono-label">03</span> FINAL RENDER</figcaption>
+      </figure>
+      <figure class="pipeline__frame">
+        <div class="pipeline__frame-media" style="background-image:url('./assets/images/pipeline-comp.jpg')"></div>
+        <figcaption><span class="mono-label">04</span> COMPOSITING</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REELS GALLERY — scattered 9:16 grid, plays on viewport enter
+       Populated dynamically from the `projects` array in script.js
+       ============================================================ -->
+  <section class="reels" id="reels" aria-label="Reels gallery">
+    <div class="reels__head">
+      <h2 class="section-title">REELS</h2>
+      <p class="mono-label">/ VERTICAL — 9:16</p>
+    </div>
+    <div class="reels__grid" id="reelsGrid"><!-- injected by script.js --></div>
+  </section>
+
+  <!-- ============================================================
+       PROCESS
+       ============================================================ -->
+  <section class="process" id="process" aria-label="Work process">
+    <h2 class="section-title">PROCESS</h2>
+
+    <ol class="process__list">
+      <li class="process__step" data-step>
+        <span class="process__num">01</span>
+        <span class="process__name">IDEA</span>
+        <span class="process__desc">Concept, reference and creative direction before touching any software.</span>
+      </li>
+      <li class="process__step" data-step>
+        <span class="process__num">02</span>
+        <span class="process__name">3D</span>
+        <span class="process__desc">Modeling, lighting and rendering built in Blender.</span>
+      </li>
+      <li class="process__step" data-step>
+        <span class="process__num">03</span>
+        <span class="process__name">MOTION</span>
+        <span class="process__desc">Animation and timing developed in After Effects.</span>
+      </li>
+      <li class="process__step" data-step>
+        <span class="process__num">04</span>
+        <span class="process__name">COMPOSITING</span>
+        <span class="process__desc">Layers, passes and effects merged into a single frame.</span>
+      </li>
+      <li class="process__step" data-step>
+        <span class="process__num">05</span>
+        <span class="process__name">FINAL</span>
+        <span class="process__desc">Color, grain and export — ready for the timeline.</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section class="about" id="about" aria-label="About">
+    <p class="mono-label">/ 02 — ABOUT</p>
+    <p class="about__text">
+      GHOTER is a motion designer and 3D artist focused on creating cinematic visuals through Blender and After Effects.
+    </p>
+    <p class="about__text about__text--secondary">
+      Transforming 3D, motion and compositing into visually striking digital experiences.
+    </p>
+  </section>
+
+  <!-- ============================================================
+       TOOLS / SOFTWARE
+       Optional tools live in the TOOLS array in script.js —
+       remove/add entries there, they render into .tools__list automatically.
+       ============================================================ -->
+  <section class="tools" id="tools" aria-label="Tools and software">
+    <p class="mono-label">/ 03 — TOOLS / SOFTWARE</p>
+    <h2 class="tools__hero">
+      <span>BLENDER</span>
+      <span class="tools__plus">+</span>
+      <span>AFTER<br>EFFECTS</span>
+    </h2>
+    <ul class="tools__list" id="toolsList"><!-- optional tools injected by script.js --></ul>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section class="contact" id="contact" aria-label="Contact">
+    <h2 class="contact__title">
+      <span data-reveal>LET'S</span>
+      <span data-reveal>CREATE</span>
+      <span data-reveal>SOMETHING.</span>
+    </h2>
+
+    <div class="contact__actions">
+      <a href="https://www.instagram.com/ghoterfx/" class="contact__btn" id="contactInstagram" target="_blank" rel="noopener noreferrer" data-magnetic>
+        <span>INSTAGRAM</span><span class="arrow">&nearr;</span>
+      </a>
+      <a href="#" class="contact__btn" id="contactDiscord" target="_blank" rel="noopener noreferrer" data-magnetic>
+        <span>DISCORD</span><span class="arrow">&nearr;</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer__top">
+    <span class="footer__brand">GHOTER <span class="mono-label">&copy; <span id="yearFooter">2026</span></span></span>
+    <nav class="footer__nav" aria-label="Footer">
+      <a href="https://www.instagram.com/ghoterfx/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      <a href="#" id="footerDiscordLink" target="_blank" rel="noopener noreferrer">DISCORD</a>
+    </nav>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__credit">
+      DESIGNED &amp; DEVELOPED BY
+      <a href="https://www.tusk-dev.com.br/" target="_blank" rel="noopener noreferrer">TUSK DEV</a>
+    </p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     VENDOR (GSAP + ScrollTrigger + Lenis smooth scroll)
+     ============================================================ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+<script src="./script.js"></script>
+</body>
+</html>
