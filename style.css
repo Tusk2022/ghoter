@@ -1026,7 +1026,7 @@ section > * { max-width: var(--container); margin-inline: auto; }
 /* ----------------------------------------------------------------
    14. ABOUT
    ---------------------------------------------------------------- */
-.about { display: flex; flex-direction: column; gap: 28px; }
+.about { display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; }
 .about__text {
   font-family: var(--font-display);
   font-weight: 500;
@@ -1034,7 +1034,7 @@ section > * { max-width: var(--container); margin-inline: auto; }
   line-height: 1.25;
   max-width: 22ch;
 }
-.about__text--secondary { color: var(--gray-3); font-weight: 400; font-size: clamp(18px, 2.4vw, 28px); }
+.about__text--secondary { color: var(--gray-3); font-weight: 400; }
 
 /* ----------------------------------------------------------------
    15. TOOLS
